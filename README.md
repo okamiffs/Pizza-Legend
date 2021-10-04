@@ -25,8 +25,8 @@ https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633371102/Pizza/223ed284-b9d
 # Server (Back End)
 ## ERD Model
 
-![](https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633371137/Pizza/Screenshot_2021-10-04_at_2.01.55_PM_v00dcx.png)
-https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633371137/Pizza/Screenshot_2021-10-04_at_2.01.55_PM_v00dcx.png
+![](https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633378142/Pizza/Screenshot_2021-10-04_at_4.08.05_PM_ub7nhj.png)
+https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633378142/Pizza/Screenshot_2021-10-04_at_4.08.05_PM_ub7nhj.png
 
 
 # Post-MVP 
