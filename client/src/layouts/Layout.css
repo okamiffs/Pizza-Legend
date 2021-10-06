@@ -1,0 +1,19 @@
+.header-title{
+  display: flex;
+}
+
+.links-container{
+  display: flex;
+}
+
+.main-header-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: red;
+}
+
+.header-links{
+  padding: 5px;
+}

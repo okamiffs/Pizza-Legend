@@ -1,0 +1,23 @@
+.generic-img{
+  width: 100%;
+}
+
+.pizza-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: flex-start;
+  align-items: flex-start;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 3%;
+  /* border: solid red 4px; */
+}
+
+.pizza-content-container{
+  display: flex;
+  flex-direction: column;
+  width: 22rem;
+  /* border: solid red 4px; */
+}
