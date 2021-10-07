@@ -31,14 +31,36 @@ function CreatePizza(props) {
     }
   };
 
-  const sizes = ["Small", "Meduim", "Large", "Legendary"];
+  const removeFromArray = (e) => {
+    e.preventDefault()
+    if (formData.toppings.length > 1) {
+      const { value } = e.target
+      setFormData((prevState) => ({
+        ...prevState,
+        toppings: 
+          prevState.toppings.filter((t) => t.id !== parseInt(value))
+      }))
+      console.log(formData)
+      setSelectedTopping(null)
+    } else {
+      setFormData((prevState) => ({
+        ...prevState,
+        toppings: []
+      }))
+      setSelectedTopping(null)
+    }
+  }
+
+  const sizes = ["Small", "Medium", "Large", "Legendary"];
 
   return (
     <div>
-      <form onSubmit={(e) => {
-        e.preventDefault()
-        props.handlePizzaCreate(formData)
-      }}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          props.handlePizzaCreate(formData);
+        }}
+      >
         <label>
           Name:
           <input
@@ -60,8 +82,11 @@ function CreatePizza(props) {
             ))}
           </select>
         </label>
-        {formData.toppings.map((topping, key) => (
-          <p key={`display${key}`}>{topping.name}</p>
+        {formData.toppings.map((topping) => (
+          <div key={topping.id}>
+            <p>{topping.name}</p>
+            <button value={topping.id} onClick={removeFromArray}>remove</button>
+          </div>
         ))}
         <label>
           Toppings:
