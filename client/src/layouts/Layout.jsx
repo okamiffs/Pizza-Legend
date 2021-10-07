@@ -10,7 +10,11 @@ function Layout(props) {
             <h1>Pizza Legend</h1>
           </div>
           <div className="links-container">
-            <Link className="header-links" to="/login">Login/Register</Link>
+            {props.currentUser ? (
+              <Link className="header-links" to="/signout">{props.currentUser.username}</Link>
+            ) : (
+              <Link className="header-links" to="/login">Login/Register</Link>
+            )}
             <Link className="header-links" to="/orders">View Orders</Link>
           </div>
         </div>

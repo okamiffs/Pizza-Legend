@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Login(props) {
   const [formData, setFormData] = useState({
@@ -18,7 +19,11 @@ function Login(props) {
     <div>
       <form onSubmit={(e) => {
         e.preventDefault()
-        props.handleLogin(formData)
+        try {
+          props.handleLogin(formData)
+        } catch (error) {
+          console.error(error)
+        }
       }}>
         <h3>Please sign in below</h3>
         <label>
@@ -32,6 +37,7 @@ function Login(props) {
         </label>
         <button>Submit</button>
       </form>
+      <p>Don't have an account? <Link to="/register">Click here</Link></p>
     </div>
   )
 }
