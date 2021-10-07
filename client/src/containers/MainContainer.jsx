@@ -1,6 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Route, Router, Switch, useHistory } from "react-router";
+import { Route, Switch, useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import CreatePizza from "../screens/CreatePizza";
 import Login from "../screens/Login";
@@ -78,6 +77,7 @@ function MainContainer(props) {
                   <img
                     className="generic-img"
                     src="https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633450081/Pizza/istockphoto-1083487948-612x612_fturxb.jpg"
+                    alt="generic pizza image"
                   />
                   <h2>{pizza.name}</h2>
                 </div>
