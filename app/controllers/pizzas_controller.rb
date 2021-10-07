@@ -1,4 +1,5 @@
 class PizzasController < ApplicationController
+  before_action :authorize_request, only: [:create, :update, :destroy]
   before_action :set_pizza, only: [:show, :update, :destroy]
 
   # GET /pizzas
@@ -15,7 +16,10 @@ class PizzasController < ApplicationController
 
   # POST /pizzas
   def create
-    @pizza = Pizza.new(pizza_params)
+    @pizza = Pizza.new(pizza_params.except(:toppings))
+    @toppings = Topping.find(pizza_params[:toppings].map {|t| t[:id]})
+    @pizza.user = @current_user
+    @pizza.toppings = @toppings
 
     if @pizza.save
       render json: @pizza, status: :created, location: @pizza, include: :toppings
@@ -59,6 +63,6 @@ class PizzasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pizza_params
-      params.require(:pizza).permit(:name, :size, :user_id)
+      params.require(:pizza).permit(:name, :size, toppings:[:id, :name, :created_at, :updated_at])
     end
 end

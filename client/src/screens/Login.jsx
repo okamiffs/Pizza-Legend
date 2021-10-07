@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import "./Login.css"
 
 function Login(props) {
   const [formData, setFormData] = useState({
@@ -16,30 +17,47 @@ function Login(props) {
   }
 
   return (
-    <div>
-      <form onSubmit={(e) => {
-        e.preventDefault()
-        try {
-          props.handleLogin(formData)
-        } catch (error) {
-          console.error(error)
-        }
-      }}>
-        <h3>Please sign in below</h3>
-        <label>
-          Username:
-          <input type="text" name="username" value={formData.username} onChange={handleChange}></input>
-        </label>
-        <br/>
-        <label>
-          Password:
-          <input type="password" name="password" value={formData.password} onChange={handleChange}></input>
-        </label>
+    <div className="form-container">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          try {
+            props.handleLogin(formData);
+          } catch (error) {
+            console.error(error);
+          }
+        }}
+      >
+        <h3 className="sign-in-title">Please sign in below</h3>
+        <div className="fields-container">
+          <label>
+            Username:
+            <input
+              className="input-fields"
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+            ></input>
+          </label>
+          <label>
+            Password:
+            <input
+              className="input-fields"
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            ></input>
+          </label>
+        </div>
         <button>Submit</button>
       </form>
-      <p>Don't have an account? <Link to="/register">Click here</Link></p>
+      <div className="redirect">
+        <p>Don't have an account? <Link to="/register">Click here</Link></p>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Login

@@ -1,0 +1,26 @@
+.form-container{
+  display: flex;
+  flex-direction: column;
+  /* border: solid blue; */
+  padding: 2rem;
+  height: 70vh;
+}
+
+.fields-container{
+  display: flex;
+  flex-direction: column;
+  /* border: solid red; */
+  margin: 0 auto 4rem;
+}
+
+.input-fields{
+  margin: 1rem;
+}
+
+.redirect{
+  margin-top: 0.3rem;
+}
+
+.sign-in-title{
+  margin: 4rem;
+}
