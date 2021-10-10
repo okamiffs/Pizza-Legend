@@ -42,7 +42,7 @@ function App() {
       <Layout currentUser={currentUser}>
         <Switch>
           <Route path="/">
-            <MainContainer handleLogin={handleLogin} handleLogout={handleLogout} handleRegister={handleRegister}/>
+            <MainContainer handleLogin={handleLogin} handleLogout={handleLogout} handleRegister={handleRegister} currentUser={currentUser}/>
           </Route>
         </Switch>
       </Layout>

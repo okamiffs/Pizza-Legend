@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { getSpecificPizza } from "../services/pizza";
+import "./CreatePizza.css"
 
 function CreatePizza(props) {
+  let { id } = useParams()
+  const [pizza, setPizza] = useState([])
+  const [topping, setToppings] = useState([])
   const [selectedTopping, setSelectedTopping] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     size: "",
     toppings: [],
   });
+
+  useEffect(() => {
+    if (id) {
+      const fetchData = async () => {
+        const resp = await getSpecificPizza(id)
+        setPizza(resp)
+        if (resp) {
+          setFormData(resp)
+          setToppings(resp.toppings)
+        }
+      }
+      fetchData()
+    }
+  }, [id])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,7 +65,7 @@ function CreatePizza(props) {
     } else {
       setFormData((prevState) => ({
         ...prevState,
-        toppings: []
+        toppings: [],
       }))
       setSelectedTopping(null)
     }
@@ -54,59 +74,115 @@ function CreatePizza(props) {
   const sizes = ["Small", "Medium", "Large", "Legendary"];
 
   return (
-    <div>
+    <div className="main-container">
+      <div className="pizza-and-toppings-container">
+        <img
+          className="pizza-img"
+          alt="generic pizza2"
+          src="https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633687302/Pizza/depositphotos_30103299-stock-photo-pepperoni-pizza_z2e5fj.jpg"
+        />
+        <div className="topping-table">
+          {formData.toppings.map((topping) => (
+            <div className="topping-selection-container" key={topping.id}>
+              <p className="topping-name">{topping.name}</p>
+              <button value={topping.id} onClick={removeFromArray}>
+                remove
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          props.handlePizzaCreate(formData);
+          if (id) {
+            const updatedFormData = {
+              name: formData.name,
+              size: formData.size,
+              toppings: [
+                ...formData.toppings,
+              ]
+            };
+            props.handlePizzaUpdate(id, updatedFormData);
+          } else {
+            props.handlePizzaCreate(formData);
+          }
+          debugger
         }}
       >
-        <label>
-          Name:
-          <input
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            type="text"
-          ></input>
-        </label>
-        <label>
-          Size:
-          <select name="size" defaultValue="default" onChange={handleChange}>
-            <option disabled value="default">
-              {" "}
-              -- Select --{" "}
-            </option>
-            {sizes.map((sizeOption) => (
-              <option value={sizeOption}>{sizeOption}</option>
-            ))}
-          </select>
-        </label>
-        {formData.toppings.map((topping) => (
-          <div key={topping.id}>
-            <p>{topping.name}</p>
-            <button value={topping.id} onClick={removeFromArray}>remove</button>
-          </div>
-        ))}
-        <label>
-          Toppings:
-          <select
-            defaultValue="default"
-            onChange={(e) => setSelectedTopping(e.target.value)}
-          >
-            <option disabled value="default">
-              {" "}
-              -- Select --{" "}
-            </option>
-            {props.toppings.map((topping) => (
-              <option key={topping.id} value={topping.id}>
-                {topping.name}
+        <div className="form-container">
+          <label>
+            Name:
+            <input
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              type="text"
+            ></input>
+          </label>
+          <label>
+            Size:
+            {id ? (
+              <select
+                value={sizes.find((value) => value == pizza.size)}
+                defaultValue="default"
+                name="size"
+                onChange={handleChange}
+              >
+                <option disabled value="default">
+                  {" "}
+                  -- Select --{" "}
+                </option>
+                {sizes.map((sizeOption, key) => (
+                  <option key={key} value={sizeOption}>
+                    {sizeOption}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <select
+                name="size"
+                defaultValue="default"
+                onChange={handleChange}
+              >
+                <option disabled value="default">
+                  {" "}
+                  -- Select --{" "}
+                </option>
+                {sizes.map((sizeOption, key) => (
+                  <option key={key} value={sizeOption}>
+                    {sizeOption}
+                  </option>
+                ))}
+              </select>
+            )}
+          </label>
+          <label>
+            Toppings:
+            <select
+              defaultValue="default"
+              onChange={(e) => setSelectedTopping(e.target.value)}
+            >
+              <option disabled value="default">
+                {" "}
+                -- Select --{" "}
               </option>
-            ))}
-          </select>
-        </label>
-        <button onClick={addToArray}>Add</button>
-        <button>Submit</button>
+              {id
+                ? topping.map((topping) => (
+                    <option key={topping.id} value={topping.id}>
+                      {topping.name}
+                    </option>
+                  ))
+                : props.toppings.map((topping) => (
+                    <option key={topping.id} value={topping.id}>
+                      {topping.name}
+                    </option>
+                  ))}
+            </select>
+          </label>
+          <button className="add-button" onClick={addToArray}>Add topping</button>
+        </div>
+          <button>Submit</button>
       </form>
     </div>
   );

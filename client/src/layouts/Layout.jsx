@@ -15,7 +15,11 @@ function Layout(props) {
             ) : (
               <Link className="header-links" to="/login">Login/Register</Link>
             )}
-            <Link className="header-links" to="/orders">View Orders</Link>
+            {props.currentUser ? (
+              <Link className="header-links" to="/orders">View Orders</Link>
+              ) : (
+              <Link className="header-links" to="/login">View Orders</Link>                
+            )}
           </div>
         </div>
       </header>

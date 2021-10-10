@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import CreatePizza from "../screens/CreatePizza";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
-import { createPizza, getAllPizzas } from "../services/pizza";
+import ViewOrder from "../screens/ViewOrder";
+import { createPizza, deletePizza, getAllPizzas, getSpecificPizza, updatePizza } from "../services/pizza";
 import { getToppings } from "../services/topping";
 import "./MainContainer.css";
 
@@ -35,6 +36,21 @@ function MainContainer(props) {
     history.push("/");
   };
 
+  const handlePizzaUpdate = async (id, formData) => {
+    const pizzaData = await updatePizza(id, formData)
+    setPizzas((prevState) => 
+      prevState.map((pizza) => {
+        return pizza.id === parseInt(id) ? pizzaData : pizza
+      })
+    )
+    history.push("/orders")
+  }
+
+  const handlePizzaDelete = async (id) => {
+    await deletePizza(id)
+    setPizzas((prevState) => prevState.filter((pizza) => pizza.id !== id))
+  }
+
   return (
     <div>
       <Switch>
@@ -51,7 +67,12 @@ function MainContainer(props) {
             <button onClick={() => history.push("/")}>No</button>
           </div>
         </Route>
-        <Route path="/orders">Hello orders</Route>
+        <Route path="/orders">
+          <ViewOrder pizzas={pizzas} currentUser={props.currentUser} handlePizzaDelete={handlePizzaDelete}/>
+        </Route>
+        <Route path="/pizza/:id/edit">
+          <CreatePizza handlePizzaUpdate={handlePizzaUpdate}/>
+        </Route>
         <Route path="/create">
           <CreatePizza
             handlePizzaCreate={handlePizzaCreate}
@@ -65,10 +86,18 @@ function MainContainer(props) {
               alt="logo"
               src="https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633578589/Pizza/025f61ffab0641998b5b64deb3f83818_q3gmzw.png"
             />
-            <h3 className="hero-title">A legendary Pizza, for legendary people!</h3>
-            <Link to="/create">
-              <button>Order now!</button>
-            </Link>
+            <h3 className="hero-title">
+              A legendary Pizza, for legendary people!
+            </h3>
+            {props.currentUser ? (
+              <Link to="/create">
+                <button>Order now!</button>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <button>Order now!</button>
+              </Link>
+            )}
           </div>
           <div className="main-pizza-container">
             {pizzas.map((pizza, key) => (

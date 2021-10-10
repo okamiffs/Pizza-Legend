@@ -17,9 +17,12 @@ class PizzasController < ApplicationController
   # POST /pizzas
   def create
     @pizza = Pizza.new(pizza_params.except(:toppings))
-    @toppings = Topping.find(pizza_params[:toppings].map {|t| t[:id]})
     @pizza.user = @current_user
-    @pizza.toppings = @toppings
+
+    if @pizza.toppings.length > 0
+      @toppings = Topping.find(pizza_params[:toppings].map {|t| t[:id]})
+      @pizza.toppings = @toppings
+    end
 
     if @pizza.save
       render json: @pizza, status: :created, location: @pizza, include: :toppings
@@ -30,7 +33,9 @@ class PizzasController < ApplicationController
 
   # PATCH/PUT /pizzas/1
   def update
-    if @pizza.update(pizza_params)
+    if @pizza.update(pizza_params.except(:toppings))
+      @toppings = Topping.find(pizza_params[:toppings].map {|t| t[:id]})
+      @pizza.toppings = @toppings
       render json: @pizza, include: :toppings
     else
       render json: @pizza.errors, status: :unprocessable_entity
@@ -50,9 +55,10 @@ class PizzasController < ApplicationController
     if @pizza.toppings.include?(@topping) == false
     @pizza.toppings << @topping
     render json: @pizza, include: :toppings
+    else
+      render json: "Your pizza already contains this topping!"
     end
 
-    render json: "Your pizza already contains this topping!"
   end
 
   private

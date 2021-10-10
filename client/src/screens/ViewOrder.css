@@ -1,0 +1,40 @@
+.view-order-img{
+  width: 150px;
+}
+
+.view-pizza-container{
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  /* border: solid red; */
+}
+
+.order-details-container{
+  display: flex;
+  /* border: solid blue; */
+  justify-content: space-between;
+  margin: 2rem;
+}
+
+.order-text-container{
+
+}
+
+.price-container{
+  display: flex;
+  align-items: center;
+  /* border: solid orange; */
+}
+
+.buttons-container{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 20%;
+}
+
+.buttons{
+  width: 90px;
+  height: 30px;
+  margin: 0 2rem 1rem 2rem;
+}

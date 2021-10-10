@@ -1,0 +1,35 @@
+.pizza-img{
+  width: 200px;
+}
+
+.pizza-and-toppings-container{
+  display: flex;
+  margin: 3rem auto;
+  justify-content: center;
+}
+
+.topping-name{
+  margin: 3px;
+}
+
+.topping-selection-container{
+  display: flex;
+}
+
+.main-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 0;
+}
+
+.add-button{
+  width: fit-content;
+}
