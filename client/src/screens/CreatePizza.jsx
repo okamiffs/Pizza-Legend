@@ -167,13 +167,14 @@ function CreatePizza(props) {
                 {" "}
                 -- Select --{" "}
               </option>
-              {id
+              {/* {id
                 ? topping.map((topping) => (
                     <option key={topping.id} value={topping.id}>
                       {topping.name}
                     </option>
                   ))
-                : props.toppings.map((topping) => (
+                : */}
+                {props.toppings.map((topping) => (
                     <option key={topping.id} value={topping.id}>
                       {topping.name}
                     </option>

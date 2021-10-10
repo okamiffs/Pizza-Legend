@@ -18,11 +18,9 @@ class PizzasController < ApplicationController
   def create
     @pizza = Pizza.new(pizza_params.except(:toppings))
     @pizza.user = @current_user
-
-    if @pizza.toppings.length > 0
-      @toppings = Topping.find(pizza_params[:toppings].map {|t| t[:id]})
-      @pizza.toppings = @toppings
-    end
+    @toppings = Topping.find(pizza_params[:toppings].map {|t| t[:id]})
+    @pizza.toppings = @toppings
+ 
 
     if @pizza.save
       render json: @pizza, status: :created, location: @pizza, include: :toppings

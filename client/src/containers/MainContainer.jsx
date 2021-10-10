@@ -71,7 +71,7 @@ function MainContainer(props) {
           <ViewOrder pizzas={pizzas} currentUser={props.currentUser} handlePizzaDelete={handlePizzaDelete}/>
         </Route>
         <Route path="/pizza/:id/edit">
-          <CreatePizza handlePizzaUpdate={handlePizzaUpdate}/>
+          <CreatePizza toppings={toppings} handlePizzaUpdate={handlePizzaUpdate}/>
         </Route>
         <Route path="/create">
           <CreatePizza
