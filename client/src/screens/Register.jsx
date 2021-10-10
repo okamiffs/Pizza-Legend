@@ -28,37 +28,54 @@ function Register(props) {
   }
 
   return (
-    <div>
-      <form onSubmit={registeration}>
-        <h3>Please sign in below</h3>
+    <div className="form-container">
+      <h3>Please sign in below</h3>
+      <form className="form-itself" onSubmit={registeration}>
         <label>
           Username:
-          <input type="text" name="username" value={formData.username} onChange={handleChange}></input>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+          ></input>
         </label>
-        <br/>
         <label>
           Email:
-          <input type="text" name="email" value={formData.email} onChange={handleChange}></input>
+          <input
+            type="text"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          ></input>
         </label>
-        <button>Submit</button>
         <label>
           Password:
-          <input type="password" name="password" value={formData.password} onChange={handleChange}></input>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          ></input>
         </label>
         <label>
           Confirm Password:
-          <input type="password" password="password" onChange={(e) => setConfirmPassword(e.target.value)}></input>
+          <input
+            type="password"
+            password="password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          ></input>
         </label>
-        <button>Submit</button>
-        {confirmPassword === formData.password ? (
-          null
-          ) : (
-            <p>Passwords don't match</p>
+        <button className="submit-button">Submit</button>
+        {confirmPassword === formData.password ? null : (
+          <p>Passwords don't match</p>
         )}
       </form>
-      <p>Don't have an account? <Link to="/register">Click here</Link></p>
+      <p>
+        Don't have an account? <Link to="/register">Click here</Link>
+      </p>
     </div>
-  )
+  );
 }
 
 export default Register
