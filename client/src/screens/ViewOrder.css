@@ -16,10 +16,6 @@
   margin: 2rem;
 }
 
-.order-text-container{
-
-}
-
 .price-container{
   display: flex;
   align-items: center;
@@ -38,7 +34,6 @@
   height: 30px;
   margin: 0 2rem 1rem 2rem;
 }
-
 
 
 @media only screen and (max-width: 650px) {
