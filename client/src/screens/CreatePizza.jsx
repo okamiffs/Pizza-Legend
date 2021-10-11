@@ -6,7 +6,7 @@ import "./CreatePizza.css"
 function CreatePizza(props) {
   let { id } = useParams()
   const [pizza, setPizza] = useState([])
-  const [topping, setToppings] = useState([])
+  // const [topping, setToppings] = useState([])
   const [selectedTopping, setSelectedTopping] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -21,7 +21,7 @@ function CreatePizza(props) {
         setPizza(resp)
         if (resp) {
           setFormData(resp)
-          setToppings(resp.toppings)
+          // setToppings(resp.toppings)
         }
       }
       fetchData()
@@ -124,7 +124,7 @@ function CreatePizza(props) {
             Size:
             {id ? (
               <select
-                value={sizes.find((value) => value == pizza.size)}
+                value={sizes.find((value) => value === pizza.size)}
                 defaultValue="default"
                 name="size"
                 onChange={handleChange}
