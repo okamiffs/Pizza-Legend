@@ -47,7 +47,7 @@ function CreatePizza(props) {
         ],
       }));
     } else {
-      console.log("Already exists");
+      alert("Your pizza already has this topping.")
     }
   };
 
