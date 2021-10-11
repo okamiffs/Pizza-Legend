@@ -5,7 +5,7 @@ import CreatePizza from "../screens/CreatePizza";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
 import ViewOrder from "../screens/ViewOrder";
-import { createPizza, deletePizza, getAllPizzas, getSpecificPizza, updatePizza } from "../services/pizza";
+import { createPizza, deletePizza, getAllPizzas, updatePizza } from "../services/pizza";
 import { getToppings } from "../services/topping";
 import "./MainContainer.css";
 

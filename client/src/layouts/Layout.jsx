@@ -25,8 +25,8 @@ function Layout(props) {
       </header>
       {props.children}
       <footer>
-        <a href="https://www.linkedin.com/in/joshua-ramnanan/"><img className="linked-in-img" src="https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633955866/Pizza/pngwing.com_1_gwadrm.png"/></a>
-        <a href="https://github.com/okamiffs"><img className="github-img" src="https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633956060/Pizza/pngwing.com_bsyvjd.png"/></a>
+        <a href="https://www.linkedin.com/in/joshua-ramnanan/"><img alt="linkedin img" className="linked-in-img" src="https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633955866/Pizza/pngwing.com_1_gwadrm.png"/></a>
+        <a href="https://github.com/okamiffs"><img alt="github img" className="github-img" src="https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633956060/Pizza/pngwing.com_bsyvjd.png"/></a>
       </footer>
     </div>
   )
