@@ -17,3 +17,34 @@
 .header-links{
   padding: 5px;
 }
+
+.home-link{
+  text-decoration: none;
+  color: black;
+}
+
+.linked-in-img{
+  width: 60px;
+}
+
+.github-img{
+  width: 60px;
+}
+
+header{
+  width: 100vw;
+}
+
+footer{
+  width: 100vw;
+}
+
+@media only screen and (max-width: 400px) {
+  .linked-in-img{
+    width: 80px;
+  }
+  
+  .github-img{
+    width: 80px;
+  }
+}

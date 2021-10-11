@@ -85,7 +85,7 @@ function CreatePizza(props) {
           {formData.toppings.map((topping) => (
             <div className="topping-selection-container" key={topping.id}>
               <p className="topping-name">{topping.name}</p>
-              <button value={topping.id} onClick={removeFromArray}>
+              <button className="buttons" value={topping.id} onClick={removeFromArray}>
                 remove
               </button>
             </div>
@@ -181,9 +181,9 @@ function CreatePizza(props) {
                   ))}
             </select>
           </label>
-          <button className="add-button" onClick={addToArray}>Add topping</button>
+          <button className="buttons" onClick={addToArray}>Add</button>
         </div>
-          <button>Submit</button>
+          <button className="buttons">Submit</button>
       </form>
     </div>
   );

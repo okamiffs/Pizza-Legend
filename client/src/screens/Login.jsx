@@ -51,7 +51,7 @@ function Login(props) {
             ></input>
           </label>
         </div>
-        <button>Submit</button>
+        <button className="sign-in-button">Sign in</button>
       </form>
       <div className="redirect">
         <p>Don't have an account? <Link to="/register">Click here</Link></p>

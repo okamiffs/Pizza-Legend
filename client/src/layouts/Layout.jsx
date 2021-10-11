@@ -7,7 +7,7 @@ function Layout(props) {
       <header>
         <div className="main-header-container">
           <div className="header-title">
-            <h1>Pizza Legend</h1>
+            <Link className="home-link" to="/"><h1>Pizza Legend</h1></Link>
           </div>
           <div className="links-container">
             {props.currentUser ? (
@@ -25,8 +25,8 @@ function Layout(props) {
       </header>
       {props.children}
       <footer>
-        <hr/>
-        <p>Stuff for now</p>
+        <a href="https://www.linkedin.com/in/joshua-ramnanan/"><img className="linked-in-img" src="https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633955866/Pizza/pngwing.com_1_gwadrm.png"/></a>
+        <a href="https://github.com/okamiffs"><img className="github-img" src="https://res.cloudinary.com/ddv5mxj6f/image/upload/v1633956060/Pizza/pngwing.com_bsyvjd.png"/></a>
       </footer>
     </div>
   )

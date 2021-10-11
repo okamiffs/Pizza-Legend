@@ -19,7 +19,6 @@
   width: 80%;
   margin: 0 auto 10rem;
   margin-top: 3%;
-  /* border: solid red; */
 }
 
 .hero-container{
@@ -29,4 +28,57 @@
 .hero-title{
   margin: 0;
   margin-bottom: 30px;
+}
+
+.order-button {
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+	background-color:#d0451b;
+	border-radius:3px;
+	border:1px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #854629;
+}
+
+.order-button:hover {
+	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+	background-color:#bc3315;
+}
+
+.order-button:active {
+	position:relative;
+	top:1px;
+}
+
+.sign-out-container{
+  height: 100vh;
+}
+
+.sign-out-options-buttons{
+  margin: auto 1rem auto 1rem;
+}
+
+@media only screen and (max-width: 400px) {
+  .generic-img{
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .main-pizza-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto 10rem;
+    margin-top: 3%;
+  }
 }

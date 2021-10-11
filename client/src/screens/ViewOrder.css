@@ -38,3 +38,24 @@
   height: 30px;
   margin: 0 2rem 1rem 2rem;
 }
+
+
+
+@media only screen and (max-width: 650px) {
+  .view-order-img{
+    width: 90px;
+  }
+
+  .buttons{
+    width: 20px;
+    text-align: center;
+  }
+
+  html{
+    width: 100vw;
+  }
+
+  .price{
+    margin: 0;
+  }
+}

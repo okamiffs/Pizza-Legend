@@ -21,7 +21,7 @@ function ViewOrder(props) {
                 <button className="buttons" onClick={() => props.handlePizzaDelete(displayPizza.id)}>Delete</button>
               </div>
             <div className="price-container">
-              <h1>$10</h1>
+              <h1 className="price">$10</h1>
             </div>
           </div>
         ))}

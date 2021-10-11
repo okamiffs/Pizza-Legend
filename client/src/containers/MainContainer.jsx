@@ -61,10 +61,10 @@ function MainContainer(props) {
           <Register handleRegister={props.handleRegister} />
         </Route>
         <Route path="/signout">
-          <div>
+          <div className="sign-out-container">
             <h3>Would you like to sign out?</h3>
-            <button onClick={props.handleLogout}>Yes</button>
-            <button onClick={() => history.push("/")}>No</button>
+            <button className="sign-out-options-buttons" onClick={props.handleLogout}>Yes</button>
+            <button className="sign-out-options-buttons" onClick={() => history.push("/")}>No</button>
           </div>
         </Route>
         <Route path="/orders">
@@ -91,11 +91,11 @@ function MainContainer(props) {
             </h3>
             {props.currentUser ? (
               <Link to="/create">
-                <button>Order now!</button>
+                <button className="order-button">Order now!</button>
               </Link>
             ) : (
               <Link to="/login">
-                <button>Order now!</button>
+                <button className="order-button">Order now!</button>
               </Link>
             )}
           </div>

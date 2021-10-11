@@ -72,7 +72,7 @@ function Register(props) {
         )}
       </form>
       <p>
-        Don't have an account? <Link to="/register">Click here</Link>
+        Already have an account? <Link to="/login">Click here</Link>
       </p>
     </div>
   );
