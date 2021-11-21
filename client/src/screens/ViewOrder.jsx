@@ -1,8 +1,61 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { verifyUser } from '../services/auth';
+import { getAllPizzas } from '../services/pizza';
 import "./ViewOrder.css"
 
 function ViewOrder(props) {
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    const getUsersPizzas = async () => {
+      await verifyUser()
+      await getAllPizzas()
+      setIsLoaded(true)
+    }
+    getUsersPizzas()
+  }, [props.currentUser])
+
+  const toppings = [
+    {name: "pepperoni", price: 1},
+    {name: "chicken", price: 1},
+    {name: "steak", price: 1.50},
+    {name: "jalapeno", price: 0.50},
+    {name: "pineapple", price: 0.50}
+  ]
+
+  const sizes = [
+    {size: "Small", price: 10},
+    {size: "Medium", price: 15},
+    {size: "Large", price: 20},
+    {size: "Legendary", price: 25},
+  ]
+
+
+  const calculatedPrice = (obj) => {
+    const currentSize = sizes.find(size => size.size === obj.size)
+    let getPrice = currentSize.price
+
+    if (obj.toppings.length) {
+      for (let i = 0; i < obj.toppings.length; i++){
+        toppings.find((x) => {
+          if (x.name === obj.toppings[i].name) {
+            getPrice += x.price
+          }
+        })
+      }
+    }
+    return getPrice
+  }
+
+  if (!isLoaded) {
+    return (
+      <div>
+        <h1>issue</h1>
+      </div>
+    )
+  }
+
   return (
     <div className="view-pizza-container">
       {props.pizzas.filter((pizza) => pizza.user_id === props.currentUser.id).map((displayPizza, key) => (
@@ -20,8 +73,8 @@ function ViewOrder(props) {
                 <Link to={`/pizza/${displayPizza.id}/edit`}><button className="buttons">Edit</button></Link>
                 <button className="buttons" onClick={() => props.handlePizzaDelete(displayPizza.id)}>Delete</button>
               </div>
-            <div className="price-container">
-              <h1 className="price">$10</h1>
+          <div className="price-container">
+            <h1 className="price">${calculatedPrice(displayPizza)}</h1>
             </div>
           </div>
         ))}
