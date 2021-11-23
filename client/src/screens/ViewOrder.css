@@ -11,7 +11,7 @@
 
 .order-details-container{
   display: flex;
-  /* border: solid blue; */
+  border: solid red;
   justify-content: space-between;
   margin: 2rem;
 }
@@ -44,6 +44,8 @@
   .buttons{
     width: 20px;
     text-align: center;
+    margin: 20px 20px 0 20px;
+    text-align: center;
   }
 
   html{
@@ -51,6 +53,11 @@
   }
 
   .price{
-    margin: 0;
+    margin: auto 0;
+    font-size: 25px;
+  }
+
+  .price-container{
+    height: 50%;
   }
 }

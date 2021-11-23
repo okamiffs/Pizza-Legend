@@ -107,7 +107,7 @@ function CreatePizza(props) {
           } else {
             props.handlePizzaCreate(formData);
           }
-          debugger
+
         }}
       >
         <div className="form-container">
@@ -181,9 +181,9 @@ function CreatePizza(props) {
                   ))}
             </select>
           </label>
-          <button className="buttons" onClick={addToArray}>Add</button>
+          <button id="add-button" className="buttons" onClick={addToArray}>Add</button>
         </div>
-          <button className="buttons">Submit</button>
+          <button id="submit-button" className="buttons">Submit</button>
       </form>
     </div>
   );

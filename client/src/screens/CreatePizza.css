@@ -55,3 +55,17 @@
 	position:relative;
 	top:1px;
 }
+
+#add-button{
+  margin: 0;
+}
+
+#submit-button{
+  margin-bottom: 15rem;
+}
+
+@media only screen and (max-height: 600px){
+  #submit-button{
+    margin-bottom: 3rem;
+  }
+}

@@ -34,7 +34,7 @@ function ViewOrder(props) {
 
   const calculatedPrice = (obj) => {
     const currentSize = sizes.find(size => size.size === obj.size)
-    let getPrice = currentSize.price
+    let getPrice = parseInt(currentSize.price)
 
     if (obj.toppings.length) {
       for (let i = 0; i < obj.toppings.length; i++){
@@ -45,7 +45,7 @@ function ViewOrder(props) {
         })
       }
     }
-    return getPrice
+    return (Number.isInteger(getPrice) ? getPrice : getPrice.toFixed(2))
   }
 
   if (!isLoaded) {
